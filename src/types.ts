@@ -16,7 +16,7 @@ export type EditorState = { pages: PageInfo[]; marks: Mark[]; fields: Record<str
 export type Draft = { bytes: Uint8Array; name: string; state: EditorState; updated: number };
 export type FormWidget = { id: string; name: string; type: string; x: number; y: number; width: number; height: number; value: string | boolean | string[]; options?: { displayValue: string; exportValue: string }[]; multiline?: boolean; radio?: boolean; buttonValue?: string; readOnly?: boolean };
 export const uid = () => crypto.randomUUID();
-export const palette = ['#252322', '#ed655c', '#3976d6', '#348c68', '#b077d8', '#eab746', '#ffffff'];
+export const palette = ['#18181b', '#facc15', '#eab308', '#2563eb', '#16a34a', '#dc2626', '#8b5cf6', '#ffffff'];
 export const emptyState: EditorState = { pages: [], marks: [], fields: {} };
 export function normalizeRotation(angle: number) { return ((angle % 360) + 360) % 360; }
 export function displaySize(page: PageInfo) { return page.rotation % 180 ? { width: page.height, height: page.width } : { width: page.width, height: page.height }; }

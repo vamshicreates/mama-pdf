@@ -1,36 +1,27 @@
-# Mama PDF
+# Mama PDF — by Vamshi Creates
 
-A personal PDF editor with charcoal, coral, and condensed Mama typography. React + TypeScript + Vite. PDF.js renders documents, PDFium removes replaced text, and pdf-lib writes additions while preserving the remaining page content.
+A private, client-side PDF editor crafted in high-contrast yellow and white by **Vamshi Creates**. Built with React 19 + TypeScript + Vite. PDF.js renders documents, PDFium removes replaced text locally in WebAssembly, and pdf-lib writes additions while preserving existing structure.
 
-## Use it
+## Features
+
+- **Yellow & White Design System**: A bright, focused, and intuitive workspace with accessible typography and clean contrast.
+- **Edit Existing PDF Text**: Click any text block on standard PDFs to edit, replace, or remove words.
+- **Visual Signatures**: Type your name or draw a custom handwritten signature with instant placement.
+- **Annotations & Shapes**: Yellow area highlights, freehand drawing, rectangles, ellipses, lines, arrows, and whiteout.
+- **Images & Links**: Insert PNG/JPEG/WebP images and create clickable URL or email hotspots.
+- **Interactive AcroForms**: Fill text fields, toggle checkboxes, select radio buttons and dropdowns.
+- **Page Management**: Reorder, rotate, delete, or insert new blank pages with live thumbnail preview.
+- **Automatic Draft Recovery**: Keeps your work safe via IndexedDB without ever sending your files to a remote server.
+- **100% Client-Side Privacy**: All processing runs entirely inside the browser.
+
+## Run Locally
 
 ```sh
-npm ci
+npm install
 npm run dev
 ```
 
-Open the address printed by Vite. Choose a PDF, try the included project brief, or start a blank page. Changes are recovered from one local IndexedDB draft. Download exports a new PDF; the original file stays untouched. Delete the local draft from the home screen.
-
-## Included
-
-- Edit existing PDF text or add new text, with font, size, color, and opacity controls
-- PNG/JPEG/WebP placement, move and proportional resize
-- Typed and hand-drawn visual signatures
-- Area highlights, freehand drawing, rectangles, ellipses, lines, arrows, whiteout
-- Clickable URL and email link areas
-- Filling existing standard AcroForm text fields, checkboxes, radio buttons and choices
-- Page thumbnails, navigation, reorder, rotation, deletion and blank page insertion
-- Undo/redo, duplication, keyboard shortcuts and zoom
-- Automatic local draft recovery
-- Locally bundled fonts, PDF worker, CMaps and rendering resources
-
-## Boundaries
-
-Click existing text with Select or Text to replace a text block. Original text is removed using PDFium in a local worker, and replacement text is written using the selected standard font. The font and color may need adjustment to match the original. Clear the text box to delete the original; Restore original text or Undo restores it. Scanned or outlined text cannot be selected without OCR. Whiteout covers content and is not secure redaction. Existing annotations are preserved but are not editable objects. Signatures are visual marks, not certificate-backed digital signatures. Encrypted PDFs, XFA forms and OCR are not supported. New ordinary text uses PDF standard Latin fonts. Unsupported characters produce an export error instead of being silently discarded. The editor accepts files up to 100 MB, with practical performance dependent on the device. Drafts are tied to this browser and site address; they do not sync between devices.
-
-PDF bytes never go to a server. There is no analytics or upload API. The application itself has no account gate; anyone with its URL can use it with their own local files. Access restrictions can be configured through the owning Vercel project if desired.
-
-## Production
+## Production Build & Test
 
 ```sh
 npm test
@@ -38,10 +29,6 @@ npm run build
 npm run preview
 ```
 
-Deploy this directory to Vercel using the included `vercel.json`, or deploy the compiled `dist` folder as a static site. `npm run build` copies PDF.js support assets before compiling.
+## Creator
 
-## Checks
-
-The export suite checks selectable text, form persistence, reordered/deleted/blank pages, rotations of 0/90/180/270 degrees, crop offsets, PDF UserUnit scaling and unsafe-link rejection. The sample document includes standard form fields for browser verification.
-
-Fonts: Barlow Condensed 900/900 italic for the brand and display, Inter for controls, Caveat for typed signatures. Color accent: `#ED655C`.
+Designed and developed by **Vamshi Creates**.

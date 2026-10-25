@@ -108,43 +108,43 @@ export async function exportPdf(bytes: Uint8Array, state: EditorState): Promise<
     }
     page.setRotation(degrees(normalizeRotation(info.originalRotation + info.rotation)));
   }
-  doc.setProducer('Mama PDF');
+  doc.setProducer('Mama PDF by Vamshi Creates');
   return doc.save();
 }
 export async function createSample(): Promise<Uint8Array> {
   const doc = await PDFDocument.create();
   const regular = await doc.embedFont(StandardFonts.Helvetica);
   const bold = await doc.embedFont(StandardFonts.HelveticaBold);
-  const coral = rgb(.929,.396,.361), dark = rgb(.14,.14,.13), gray = rgb(.46,.46,.44);
+  const yellow = rgb(.91, .69, .05), dark = rgb(.09, .09, .11), gray = rgb(.44, .44, .48);
   const p = doc.addPage([595, 842]);
   p.drawRectangle({ x:0,y:790,width:595,height:52,color:dark });
-  p.drawText('MAMA / CREATIVE STUDIO', {x:42,y:810,size:11,font:bold,color:rgb(1,1,1)});
-  p.drawText('PROJECT BRIEF', {x:42,y:736,size:10,font:bold,color:coral});
+  p.drawText('VAMSHI CREATES / CREATIVE STUDIO', {x:42,y:810,size:11,font:bold,color:rgb(1,1,1)});
+  p.drawText('PROJECT BRIEF', {x:42,y:736,size:10,font:bold,color:yellow});
   p.drawText('Make something', {x:42,y:678,size:38,font:bold,color:dark});
   p.drawText('worth keeping.', {x:42,y:631,size:38,font:bold,color:dark});
   p.drawText('A small idea. A little attention. A beautiful result.', {x:42,y:590,size:13,font:regular,color:gray});
-  p.drawLine({start:{x:42,y:558},end:{x:553,y:558},thickness:1,color:rgb(.85,.85,.83)});
+  p.drawLine({start:{x:42,y:558},end:{x:553,y:558},thickness:1,color:rgb(.88,.88,.90)});
   const sections = [ ['01   THE IDEA', 'Create a short film about the people behind the work.', 'Honest conversations, thoughtful details, and a story that stays.'], ['02   THE APPROACH', 'Start with a conversation. Find the story. Make it feel human.', 'A two-minute film, a handful of portraits, and one clear message.'], ['03   THE DETAILS', 'Shoot date: 18 November     |     Location: Studio 03', 'Deliverables: One hero film + three social edits'] ];
-  sections.forEach(([title,line1,line2],i)=>{const y=520-i*104;p.drawText(title,{x:42,y,size:10,font:bold,color:coral});p.drawText(line1,{x:42,y:y-28,size:11,font:regular,color:dark});p.drawText(line2,{x:42,y:y-47,size:11,font:regular,color:gray});});
-  p.drawRectangle({x:42,y:128,width:511,height:68,color:rgb(.96,.95,.92)});
+  sections.forEach(([title,line1,line2],i)=>{const y=520-i*104;p.drawText(title,{x:42,y,size:10,font:bold,color:yellow});p.drawText(line1,{x:42,y:y-28,size:11,font:regular,color:dark});p.drawText(line2,{x:42,y:y-47,size:11,font:regular,color:gray});});
+  p.drawRectangle({x:42,y:128,width:511,height:68,color:rgb(.99,.97,.89)});
   p.drawText('YOUR TURN', {x:58,y:172,size:9,font:bold,color:gray});
   p.drawText('Add a note. Highlight a detail. Make this brief yours.',{x:58,y:149,size:11,font:regular,color:dark});
-  p.drawText('Mama PDF / Sample document',{x:42,y:50,size:9,font:regular,color:gray});
+  p.drawText('Mama PDF by Vamshi Creates / Sample document',{x:42,y:50,size:9,font:regular,color:gray});
   p.drawText('01',{x:539,y:50,size:9,font:bold,color:dark});
   const p2=doc.addPage([595,842]);
   p2.drawText('A few finishing touches.',{x:42,y:752,size:30,font:bold,color:dark});
   p2.drawText('Try the Forms tool to fill in these fields.',{x:42,y:710,size:12,font:regular,color:gray});
   const form=doc.getForm();
   p2.drawText('YOUR NAME',{x:42,y:646,size:10,font:bold,color:gray});
-  const name=form.createTextField('Name');name.addToPage(p2,{x:42,y:590,width:360,height:36,borderWidth:1,borderColor:rgb(.8,.8,.78)});
+  const name=form.createTextField('Name');name.addToPage(p2,{x:42,y:590,width:360,height:36,borderWidth:1,borderColor:rgb(.85,.85,.88)});
   p2.drawText('PROJECT NOTES',{x:42,y:548,size:10,font:bold,color:gray});
-  const notes=form.createTextField('Notes');notes.enableMultiline();notes.addToPage(p2,{x:42,y:420,width:511,height:105,borderWidth:1,borderColor:rgb(.8,.8,.78)});
+  const notes=form.createTextField('Notes');notes.enableMultiline();notes.addToPage(p2,{x:42,y:420,width:511,height:105,borderWidth:1,borderColor:rgb(.85,.85,.88)});
   const cb=form.createCheckBox('Approved');cb.addToPage(p2,{x:42,y:367,width:16,height:16});
   p2.drawText('Ready to make it happen',{x:70,y:369,size:12,font:regular,color:dark});
   p2.drawText('Signature',{x:42,y:292,size:11,font:regular,color:gray});
-  p2.drawLine({start:{x:42,y:214},end:{x:330,y:214},thickness:1,color:rgb(.8,.8,.78)});
+  p2.drawLine({start:{x:42,y:214},end:{x:330,y:214},thickness:1,color:rgb(.85,.85,.88)});
   p2.drawText('Add your signature above using the Sign tool.',{x:42,y:190,size:10,font:regular,color:gray});
-  p2.drawText('Mama PDF / Sample document',{x:42,y:50,size:9,font:regular,color:gray});
+  p2.drawText('Mama PDF by Vamshi Creates / Sample document',{x:42,y:50,size:9,font:regular,color:gray});
   p2.drawText('02',{x:539,y:50,size:9,font:bold,color:dark});
   return doc.save();
 }
